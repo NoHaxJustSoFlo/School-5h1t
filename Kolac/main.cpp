@@ -168,15 +168,72 @@ void IspisiKolac(const Kolac& kolac)
             break;
         }
     cout << "------------------------" << endl
-         << "Stanje: " << kolac.GetStanje() << endl
+         << "Stanje: " << stanje << endl
          << "Temperatura: " << kolac.GetTemperatura() << endl
          << "Preliv: " << ((kolac.GetPreliv().GetTip() == COKOLADNI) ? "COKOLADNI" : "COKOLADNI_SA_SLAGOM") << endl
          << "------------------------" << endl;
 }
 
+bool Meni(Kolac& kolac)
+{
+    cout << "1) Stavi da se pece" << endl
+         << "2) Ispeci kolac" << endl
+         << "3) Zavrsi kolac" << endl
+         << "4) Povecaj temperaturu" << endl
+         << "5) Smanji temperaturu" << endl
+         << "6) Dodaj slag" << endl
+         << "7) Ukloni slag" << endl
+         << "8) Ispis kolac" << endl
+         << "9) Ispis preliv" << endl
+         << "10) Exit" << endl
+         << "> ";
+    int izbor = 0;
+    do
+    {
+        cin >> izbor;
+    }while(izbor < 1 || izbor > 10);
+    bool uspesno;
+    switch(izbor)
+    {
+    case 1:
+        uspesno = kolac.StaviDaSePece();
+        break;
+    case 2:
+        uspesno = kolac.IspeciKolac();
+        break;
+    case 3:
+        uspesno = kolac.ZavrsiKolac();
+        break;
+    case 4:
+        uspesno = kolac.PovecajTemperaturu();
+        break;
+    case 5:
+        uspesno = kolac.SmanjiTemperaturu();
+        break;
+    case 6:
+        uspesno = kolac.DodajSlag();
+        break;
+    case 7:
+        uspesno = kolac.UkloniSlag();
+        break;
+    case 8:
+        IspisiKolac(kolac);
+        return false;
+    case 9:
+        IspisiPreliv(kolac.GetPreliv());
+        return false;
+    case 10:
+        return true;
+    }
+    cout << "------------------------" << endl
+         << (uspesno ? "       USPESNO" : "       NEUSPESNO") << endl
+         << "------------------------" << endl;
+    return false;
+}
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    Kolac kolac;
+    while(!Meni(kolac));
     return 0;
 }
