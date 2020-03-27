@@ -31,18 +31,149 @@ public:
         }
         return false;
     }
-    string GetTip() const
+    TipPreliva GetTip() const
     {
-        return tip == COKOLADNI ? "COKOLADNI" : "COKOLADNI SA SLAGOM";
+        return tip;
     }
 };
 
 void IspisiPreliv(const Preliv& preliv)
 {
     cout << "------------------------" << endl
-         << "Preliv: " << preliv.GetTip() << endl
-         << "------------------------"; << endl;
+         << "Preliv: " << ((preliv.GetTip() == COKOLADNI) ? "COKOLADNI" : "COKOLADNI_SA_SLAGOM") << endl
+         << "------------------------" << endl;
 }
+
+enum KolacStanje{ U_PRIPREMI, PECE_SE, ZAGOREO, PRIPREMLJEN };
+
+class Kolac
+{
+private:
+    KolacStanje stanje;
+    int temperatura;
+    Preliv preliv;
+public:
+    Kolac() : preliv()
+    {
+        temperatura = 20;
+        stanje = U_PRIPREMI;
+    }
+    Kolac(const Kolac& kolac) : preliv(kolac.GetPreliv().GetTip())
+    {
+        temperatura = kolac.temperatura;
+        stanje = kolac.stanje;
+    }
+    int GetTemperatura()const
+    {
+        return temperatura;
+    }
+    KolacStanje GetStanje()const
+    {
+        return stanje;
+    }
+    Preliv GetPreliv()const
+    {
+        return preliv;
+    }
+    bool StaviDaSePece()
+    {
+        if(preliv.GetTip() == COKOLADNI)
+        {
+            stanje = PECE_SE;
+            PovecajTemperaturu();
+            return true;
+        }
+        return false;
+    }
+    bool IspeciKolac()
+    {
+        if(stanje == PECE_SE)
+        {
+            stanje = U_PRIPREMI;
+            temperatura = 20;
+            return true;
+        }
+        return false;
+    }
+    bool ZavrsiKolac()
+    {
+        if(stanje == U_PRIPREMI)
+        {
+            stanje = PRIPREMLJEN;
+            return true;
+        }
+        return false;
+    }
+    bool PovecajTemperaturu()
+    {
+        if(stanje == PECE_SE)
+        {
+            temperatura += 20;
+            if(temperatura > 100)
+            {
+                stanje = ZAGOREO;
+                temperatura = 20;
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+    bool SmanjiTemperaturu()
+    {
+        if(stanje == PECE_SE)
+        {
+            if(temperatura - 20 >= 40)
+            {
+                temperatura -= 20;
+                return true;
+            }
+        }
+        return false;
+    }
+    bool DodajSlag()
+    {
+        if(stanje == U_PRIPREMI)
+        {
+            return preliv.DodajSlag();
+        }
+        return false;
+    }
+    bool UkloniSlag()
+    {
+        if(stanje == U_PRIPREMI)
+        {
+            return preliv.UkloniSlag();
+        }
+        return false;
+    }
+};
+
+void IspisiKolac(const Kolac& kolac)
+{
+    string stanje;
+        switch(kolac.GetStanje())
+        {
+        case U_PRIPREMI:
+            stanje = "U_PRIPREMI";
+            break;
+        case PECE_SE:
+            stanje = "PECE_SE";
+            break;
+        case ZAGOREO:
+            stanje = "ZAGOREO";
+            break;
+        case PRIPREMLJEN:
+            stanje = "PRIPREMLJEN";
+            break;
+        }
+    cout << "------------------------" << endl
+         << "Stanje: " << kolac.GetStanje() << endl
+         << "Temperatura: " << kolac.GetTemperatura() << endl
+         << "Preliv: " << ((kolac.GetPreliv().GetTip() == COKOLADNI) ? "COKOLADNI" : "COKOLADNI_SA_SLAGOM") << endl
+         << "------------------------" << endl;
+}
+
 
 int main()
 {
