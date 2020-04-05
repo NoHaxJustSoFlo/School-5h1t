@@ -234,6 +234,15 @@ bool Meni(Kolac& kolac)
 int main()
 {
     Kolac kolac;
+    Kolac kolac2;
+
+    Kolac& referenca = kolac;
+
+    referenca = kolac2;
+
+    kolac.DodajSlag();
+    referenca.DodajSlag();
+
     while(!Meni(kolac));
     return 0;
 }
