@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1588947656 source:c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\dinstring.cpp
+	"dinstring.hpp"
+
+1588947479 c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\dinstring.hpp
+	<iostream>
+
+1588951831 source:c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\main.cpp
+	<iostream>
+	"Lista.hpp"
+	"igracka.hpp"
+	"plisanaigracka.hpp"
+	"autic.hpp"
+	"igraonica.hpp"
+
+1588947398 c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\lista.hpp
+	<stdlib.h>
+	<iostream>
+
+1588950755 c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\igracka.hpp
+	"dinstring.hpp"
+
+1588949098 c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\plisanaigracka.hpp
+
+1588951422 c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\autic.hpp
+
+1588951831 c:\users\bojan\desktop\gjjz\codeblocks\hellokitty\igraonica.hpp
+	"Lista.hpp"
+
+1588954552 source:c:\users\toni\documents\github\school-5h1t\hellokitty\dinstring.cpp
+	"dinstring.hpp"
+
+1588954552 c:\users\toni\documents\github\school-5h1t\hellokitty\dinstring.hpp
+	<iostream>
+
+1588954552 source:c:\users\toni\documents\github\school-5h1t\hellokitty\main.cpp
+	<iostream>
+	"Lista.hpp"
+	"igracka.hpp"
+	"plisanaigracka.hpp"
+	"autic.hpp"
+	"igraonica.hpp"
+
+1588954552 c:\users\toni\documents\github\school-5h1t\hellokitty\lista.hpp
+	<stdlib.h>
+	<iostream>
+
+1588954552 c:\users\toni\documents\github\school-5h1t\hellokitty\igracka.hpp
+	"dinstring.hpp"
+
+1588954552 c:\users\toni\documents\github\school-5h1t\hellokitty\plisanaigracka.hpp
+
+1588954552 c:\users\toni\documents\github\school-5h1t\hellokitty\autic.hpp
+
+1588954552 c:\users\toni\documents\github\school-5h1t\hellokitty\igraonica.hpp
+	"Lista.hpp"
+
